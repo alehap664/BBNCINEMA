@@ -1,0 +1,435 @@
+// Section
+.section{
+  padding: 70px 0px;
+  color: white;
+
+  &__text{
+    color: #fff;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+
+  &--border{
+    border-top: 1px solid #{$gray};
+  }
+  &__title{
+    font-size: 2.5rem;
+    &.--wrap{
+      @include d-flex(row, nowrap, space-between, center);
+      
+    }
+    &.--mb{
+      margin-bottom: 30px;
+    }
+  }
+  &__nav{
+
+    &--wrap{
+      @include d-flex(row, nowrap, center, center);
+      .view_all{
+        margin-right: 25px;
+        transition: all .4s ease;
+        font-size: 14px;
+        border-radius: 0.4rem;
+        background-color: #{$gray};
+        @include d-flex("", "", center, center);
+        height: 30px;
+        width: 80px;
+      }
+      &>*:nth-child(2){
+        margin-right: 15px;
+      }
+    }
+  }
+  
+  @include hover(".view_all", white, #{$orange});
+
+}
+.section--details {
+  margin-top: 80px;
+  padding: 50px 0;
+  position: relative;
+  color: white;
+}
+
+// Content
+.content{
+  & .content__head{
+    padding-top: 70px;
+  }
+}
+.content__head{
+  margin-bottom: 30px;
+  border-bottom: 2px solid #{$gray};
+}
+
+.content__title{
+  color: white;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  @include screen("Ipad"){
+    margin-bottom: 10px;
+  }
+}
+
+.content__tabs{
+  @include d-flex();
+  display: none;
+  margin: 0;
+  
+  font-size: 14px;
+  color: white;
+  @include screen("Ipad"){
+    display: flex;
+  }
+
+  @include hover("li", white, #{$orange});
+  .tab{
+    @include d-flex(row, nowrap, center, center);
+    margin-right: 30px;
+    height: 54px;
+    position: relative;
+
+    &::before{
+      @include pseudo();
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      top: 100%;
+    }
+    &--active{
+      color: #{$orange} !important;
+      &::before{
+        background-color: #{$orange};
+      }
+    }
+    span{
+      cursor: pointer;
+    }
+  }
+}
+
+.content__mobile{
+  position: relative;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 20px;
+  @include screen("Ipad"){
+    display: none;
+  }
+  &--btn{
+    @include d-flex(row, nowrap, flex-start, center);
+    cursor: pointer;
+    height: 20px;
+    line-height: 1;
+    input{
+      position: relative;
+      width: auto;
+      background-color: transparent;
+      border: none;
+      text-transform: uppercase;
+      color: #fff;
+      height: 20px;
+      padding: 0;
+      margin-right: 5px;
+      pointer-events: none;
+    }
+    span{
+      position: relative;
+      width: 16px;
+      height: 16px;
+      display: block;
+      margin-top: -3px;
+    }
+    span:after, span:before{
+      @include pseudo();
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+      left: 0;
+      top: 0%;
+      transition: 0.4s ease;
+    }
+    span:before{
+      width: 16px;
+      top: 25%;
+    }
+    span:after{
+      width: 10px;
+      top: 75%;
+    }
+  }
+  &--btn--active{
+    span:before{
+      top: 50%;
+      transform: rotate(45deg);
+    }
+    span:after{
+      width: 16px;
+      top: 50%;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &--dropdown{
+    background-color: #{$gray};
+    position: absolute;
+    width: 200px;
+    top: 100%;
+
+    padding: 20px;
+    margin-top: 10px;
+
+    border-radius: .5rem;
+
+    transition: all ease 0.4s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -99999;
+    &--active{
+      z-index: 99999;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &--nav{
+    margin: 0;
+    li:not(:last-child){
+      margin-bottom: 20px;
+    }
+    
+    @include hover("span", white, #{$orange})
+  }
+}
+
+.tab--panel{
+  &:not(.active){
+    display: none;
+  }
+  &.active{
+    display: block;
+  }
+}
+
+
+.catalog{
+  padding: 70px 0px;
+}
+
+.pagination{
+  @include d-flex(row, wrap, center, center);
+  @include hover("a", white, #{$orange});
+
+  &--item{
+    @include d-flex("", "", center, center);
+    @extend %btn-square;
+    margin: 10px;
+    border-radius: 0.4rem;
+    background-color: #{$gray};
+
+    &.--active{
+      border: 1px solid #{$orange};
+    }
+    &.--disable{
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+  
+}
+
+
+.footer{
+  border-top: 1px solid #{$gray};
+  &__content{
+    @include d-flex(row, wrap, "", center);
+    padding: 20px 0;
+  }
+  @include hover("a", white, white);
+  .logo{
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  &__copyright{
+    color: white;
+    font-size: .7rem;
+  }
+  &__nav{
+    @include d-flex(row, nowrap, flex-start, center);
+    width: 100%;
+    font-size: .8rem;
+    margin-bottom: 50px;
+
+    @include hover("a", rgba(255, 255, 255, 0.7), #{$orange});
+    a{
+      margin-right: 20px;
+      transition: all .4s ease;
+      font-weight: 500;
+    }
+  }
+  &--btn{
+    @extend %btn-clear;
+    @extend %btn-square;
+    @extend %border;
+    background-color: #{$gray};
+    color: white;
+    line-height: 1;
+    margin-left: auto;
+  }
+
+  @include screen("Ipad"){
+    .logo{
+      font-size: 2rem;
+      margin-bottom: 0px;
+    }
+    &__content{
+      flex-wrap: nowrap;
+    }
+    &__copyright{
+      order: 2;
+      margin-left: 20px;
+    }
+    &__nav{
+      order: 3;
+      width: auto;
+      margin-bottom: 0;
+      margin-left: auto;
+    }
+    &--btn{
+      margin-left: 0;
+      order: 4;
+    }
+  }
+}
+
+.contact{
+  color: white;
+  &__title{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  &__form{
+    padding: 30px;
+    border: 1px solid #{$gray};
+    border-radius: .5rem;
+    margin-bottom: 20px;
+
+  }
+  &__input{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &__btn{
+    @extend %btn-clear;
+    @extend %border;
+    background-color: #{$gray};
+    color: white;
+    padding: .5rem 1rem;
+  }
+  .form-group{
+    margin-bottom: 20px;
+  }
+}
+.info{
+  color: white;
+  &__title{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  &__text{
+    margin-bottom: 30px;
+  }
+  @include hover("a", white, #{$orange});
+  &__phone{
+    display: block;
+    margin-bottom: 10px;
+    transition: all .4s ease;
+    
+  }
+  &__mail{
+    display: block;
+    margin-bottom: 10px;
+    transition: all .4s ease;
+  }
+  &__social{
+    list-style: none;
+    margin-bottom: 20px;
+
+    a{
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 25px;
+      text-align: center;
+      border-radius: 50%;
+      margin-right: 10px;
+      &:hover{
+        color: inherit;
+      }
+    }
+  }
+}
+
+.feature{
+  @include d-flex(row, nowrap, center, "");
+  margin-top: 50px;
+  padding-right: 90px;
+
+  &__icon{
+    font-size: 42px;
+    color: #{$orange};
+    align-self: flex-start;
+    line-height: 1;
+    margin-top: -10px; 
+  }
+  &__content{
+    margin-left: 20px;
+  }
+  &__title{
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 100%;
+  }
+}
+
+.how{
+  margin-top: 50px;
+  padding-right: 90px;
+
+  &__number{
+    font-size: 46px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+    color: #f9ab00;
+    width: 100%;
+  }
+  &__title{
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 100%;
+  }
+}
+
+.partner{
+  display: block;
+  margin-top: 40px;
+  img{opacity: 0.7}
+}
+
+.logo{
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: white;
+
+  &:hover{
+    color: white;
+  }
+}

@@ -1,0 +1,64 @@
+.auth{
+  position: relative;
+  height: 100vh;
+  background: url("https://dmitryvolkov.me/demo/hotflix2.1/admin/img/section/section.jpg") center center / cover no-repeat;
+  
+  .container{
+    @include screen("Laptop"){
+      max-width: 1140px !important;
+    }
+  }
+}
+
+.sign__content{
+  @include d-flex("", "", center, center);
+  min-height: 100vh;
+
+  form{
+    width: 100%;
+    max-width: 400px;
+    background-color: #{$black};
+    padding: 30px;
+  }
+}
+.sign__logo{
+  @include d-flex("", "", center, center);
+  margin-bottom: 1rem;
+}
+.sign__btn{
+  @extend %btn-clear;
+  @extend %border;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  padding: .75rem;
+  margin: .5rem 0;
+}
+.sign__text{
+  display: block;
+  color: white;
+  text-align: center;
+  margin-bottom: .5rem;
+  font-size: 0.8rem;
+  a{
+    color: #{$orange};
+    &:hover{
+      text-decoration: underline !important;
+    }
+  }
+}
+.sign__social{
+  @include d-flex("", "", center, center);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  a{
+    @extend %border;
+    @include d-flex("", "", center, center);
+    width: 50%;
+    border-color: transparent;
+    color: white;
+    padding: .75rem;
+  }
+
+}

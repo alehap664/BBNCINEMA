@@ -1,0 +1,245 @@
+._carousel{
+  .card-carousel{
+    margin-top: 30px;
+  }
+}
+
+.card-carousel{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: auto;
+
+  position: relative;
+  overflow: hidden;
+  
+  &__outer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: auto;
+  }
+  &__inter{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+.card{
+  background-color: transparent !important;
+  border: none !important;
+  &__wrap{
+    margin-bottom: 30px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  &__cover{
+    position: relative;
+    background-color: #{$black};
+    border-radius: .5rem;
+    overflow: hidden;
+
+    img{
+      width: 100%;
+      transition: opacity 0.5s;
+      vertical-align: middle;
+    }
+    &:hover{
+      img{
+        opacity: 0.4;
+      }
+      .card__play{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+  &__play{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transition: 0.5s;
+    transform: translate(-50%, -50%) scale(0.9);
+
+    width: 25%;
+    height: 17%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #{$orange} !important;
+    background-color: rgba(255,255,255,0.2);
+    border: .3em solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+
+    font-size: 100%;
+
+    &:hover{
+      border-color: #{$orange};
+    }
+    
+  }
+  &__rate{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+
+    width: 20%;
+    height: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background-color: rgba(26, 25, 31, .7);
+    color: white;
+
+    font-size: 80%;
+
+    &--red{
+      border-color: red;
+    }
+    &--orange{
+      border-color: #{$orange};
+    }
+    &--green{
+      border-color: green;
+    }
+  }
+  &__content{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+  &__title{
+    color: white;
+    font-size: 1.3rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 0px !important;
+    line-height: unset;
+    font-weight: 400;
+    margin-bottom: .25rem !important;
+    @include hover("a", white, $orange)
+  }
+  &__category{
+    line-height: 1;
+    &__item{
+      display: inline-block;
+      position: relative;
+      margin-right: .5rem;
+
+      color: #{$orange} !important;
+      opacity: 0.8;
+      font-size: .8rem;
+      
+      &:hover{
+        opacity: 1;
+      }
+
+      &:not(:last-child)::before{
+        @include pseudo(",");
+        left: 100%;
+        bottom: 0;
+        color: #{$orange};
+      }
+    }
+  }
+}
+
+.card-carousel{
+  .card__title{
+    font-size: 1.5rem;
+  };
+  .card__category{
+    &__item{
+      font-size: 1rem;
+    }
+  }
+}
+
+.card--details{
+  .card{
+    &__watch{
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+  
+      max-width: 250px;
+  
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: white;
+    }
+    &__cover{
+      max-width: 250px;
+    }
+    &__content{
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+    }
+    &__detail{
+      margin-bottom: 1rem;
+      li{
+        @include d-flex(row, wrap, "", center);
+        @include hover("a", #{$orange} !important, rgba(249, 171, 0, .8) !important);
+        span, a{
+          margin-right: 0.5rem;
+          position: relative;
+        }
+        span:not(:first-child), a:not(:first-child){
+          color: #{$orange};
+          &:not(:last-child)::after{
+            @include pseudo(",");
+            margin-top: 2px;
+            top: 0%;
+            left: 100%;
+          }
+        }
+      }
+    }
+    &__description{
+      margin-bottom: 1rem;
+      padding: 15px 20px;
+      background-color: #{$gray};
+      overflow: hidden;
+      @include screen("Ipad-large"){
+        margin-bottom: 0rem;
+      }
+      &--scroll{
+        max-height: 160px;
+        overflow: auto;
+        @include screen("Ipad"){
+          max-height: 170px;
+        }
+        @include screen("Ipad-large"){
+          max-height: 180px;
+        }
+        @include screen("Laptop"){
+          max-height: 140px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 5px !important;
+        }
+  
+        &::-webkit-scrollbar-thumb {
+          background-color: #{$orange};
+          border-radius: 10px;
+        }
+  
+        &::-webkit-scrollbar-track {
+          width: 5px;
+          background-color: black;
+        }
+      }
+      &--text{
+        padding-right: 20px;
+      }
+    }
+  }
+}
